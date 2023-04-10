@@ -1,0 +1,91 @@
+<!DocType html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,JavaScript">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Scroll spy</title>	
+		<style>
+			.cont{display:flex;border:2px outset black;padding:20px 0px;width:50%;height:200px;}
+			.short{padding:20px;display:flex;flex-direction:column;}
+			a{text-decoration:none; padding:10px;}
+			.full{border:2px inset black;width:80%;overflow:scroll;}
+			#ref{height:2px;background-color:white;position:sticky;top:0;text-align:center;}
+			.class{background-color:blue;border:2px inset blue;border-radius:10px;color:white;}
+			
+		</style>
+	
+	</head>
+	
+	<body>
+	<section>
+	<div  class="cont">
+		<div class="short">
+			<a id="l1" href="#lion">Lion</a>
+			<a id="t1" href="#tiger">Tiger</a>
+			<a id="m1" href="#monkey">Monkey</a>
+		</div>
+		<div id="full" class="full">
+				<h1 id="ref"></h1>
+			<div id="lion">
+				<h2>Lion</h2>
+				<p>The lion is a large cat of the genus Panthera native to Africa and India. 
+				It has a muscular, broad-chested body; short, rounded head; round ears; 
+				and a hairy tuft at the end of its tail. It is sexually dimorphic; 
+				adult male lions are larger than females and have a prominent mane.</p>
+			</div>
+			<div id="tiger">
+				<h2>Tiger</h2>
+				<p>The tiger is the largest living cat species and a member of the genus Panthera. 
+				It is most recognisable for its dark vertical stripes on orange fur with a white underside. 
+				An apex predator, it primarily preys on ungulates, such as deer and wild boar.</p>
+			</div>
+			<div  id="monkey">
+ 				<h2>Monkey</h2>
+				<p>Monkey is a common name that may refer to most mammals of the infraorder Simiiformes, 
+				also known as the simians. Monkey is a common name that may refer to most mammals of the
+				infraorder Simiiformes, also known as the simians. Traditionally, all animals in the group 
+				now known as simians are counted as monkeys except the apes, which constitutes an incomplete 
+				paraphyletic grouping.</p>
+			</div>
+		</div>
+	</div>
+	
+	</section>
+	
+	<script>
+	
+		var ref=document.getElementById("ref");
+		var full=document.getElementById("full"); 
+		var ll=document.getElementById("l1"); 
+		var tl=document.getElementById("t1"); 
+		var ml=document.getElementById("m1"); 
+		
+		var lion=document.getElementById("lion");
+		var tiger=document.getElementById("tiger");
+		var monkey=document.getElementById("monkey");
+		
+		full.addEventListener("scroll",function(){
+			var x=ref.offsetTop;
+			if(x<lion.offsetTop+tiger.offsetHeight/2){
+				ll.classList.add("class");
+				tl.classList.remove("class");
+				ml.classList.remove("class");
+			}
+			else if(x>=lion.offsetTop+tiger.offsetHeight/2 && x<=tiger.offsetTop+monkey.offsetHeight/2){
+				ll.classList.remove("class");
+				tl.classList.add("class");
+				ml.classList.remove("class");
+			}
+			else{
+				ll.classList.remove("class");
+				tl.classList.remove("class");
+				ml.classList.add("class");
+			}
+		})
+		
+			
+	</script>
+	</body>
+</html>
